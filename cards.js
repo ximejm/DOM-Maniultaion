@@ -36,8 +36,8 @@ const USERS = [
 //Crear seccciones  
 function CreateElements () {
     const cardobj = { 
-        name_section: document.createElement("h3)"),
-        desc_section:document.createElement("p)"),
+        name_section: document.createElement("h3"),
+        desc_section:document.createElement("p"),
         age_section: document.createElement("p"),
         book_section:document.createElement("div"), 
     };
@@ -47,24 +47,26 @@ function CreateElements () {
 
 //Crear tarjeta 
 //Inyectamos info 
-function InjectData (obj, user){
+function InjectData (obj, user) {
     const booklist = user.fav_books.books.map((e) => { 
         const item = document.createElement("ul"); 
         item.textContent = e; 
         return item; 
-    })
+    });
+
     obj.name_section.textContent = user.username; 
     obj.desc_section.textContent = user.desc;
     obj.age_section.textContent = user.age; 
     obj.book_section.append(...booklist);
+    RenderCard(obj); 
 }
 
 function RenderCard (cardobj) { 
 const card = document.createElement("div"); 
-card.append(cardObj.name_section, 
+card.append(cardobj.name_section, 
     cardobj.desc_section, 
     cardobj_agesection, 
-    cardobj_booksection
+    cardobj_booksection,
 );
 card.className("div-creado");     
 CARDS_CONTAINER.appendChild(card); 
